@@ -1,4 +1,3 @@
-import handler.SnakeHandler.SnakeSegment;
 import lombok.Getter;
 import lombok.Setter;
 
