@@ -5,7 +5,7 @@ import request.Request;
 /**
  * 
  */
-public class BaseHandler implements Handler {
+public abstract class BaseHandler implements Handler {
 
     /**
      * Default constructor
