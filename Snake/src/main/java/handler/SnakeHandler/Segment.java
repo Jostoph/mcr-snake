@@ -1,5 +1,8 @@
 package handler.SnakeHandler;
 
+import handler.BaseHandler;
+import request.Request;
+
 /**
  * 
  */

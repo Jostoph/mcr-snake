@@ -5,6 +5,10 @@ import java.util.*;
  * 
  */
 public class SnakeManager {
+    /**
+     *
+     */
+    public Board  board;
 
     /**
      * Default constructor
@@ -12,10 +16,6 @@ public class SnakeManager {
     public SnakeManager() {
     }
 
-    /**
-     * 
-     */
-    public Board  board;
 
 
 
