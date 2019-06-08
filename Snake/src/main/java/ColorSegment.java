@@ -1,4 +1,5 @@
 
+import java.awt.*;
 import java.util.*;
 
 /**
@@ -15,20 +16,20 @@ public class ColorSegment extends Segment {
     /**
      * 
      */
-    public void Color;
+    public  Color color;
 
     /**
      * @param request
      */
-    public void Handle(void request) {
+    public void Handle(Request request) {
         // TODO implement here
     }
 
     /**
-     * @param Color
+     * @param color
      */
-    public void HasSameColor(void Color) {
-        // TODO implement here
+    public void HasSameColor( java.awt.Color color) {
+        // TODO implement here + verivier si java.awt
     }
 
 }

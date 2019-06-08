@@ -15,7 +15,7 @@ public class ColorTrapSegment extends ColorSegment {
     /**
      * @param request
      */
-    public void Handle(void request) {
+    public void Handle(Request request) {
         // TODO implement here
     }
 

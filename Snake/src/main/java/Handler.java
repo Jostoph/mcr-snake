@@ -7,13 +7,13 @@ import java.util.*;
 public interface Handler {
 
     /**
-     * @param Handler
+     * @param handler
      */
-    public void setNext(void Handler);
+    public void setNext(Handler handler);
 
     /**
-     * @param Request
+     * @param request
      */
-    public void Handler(void Request);
+    public void Handler(Request request);
 
 }

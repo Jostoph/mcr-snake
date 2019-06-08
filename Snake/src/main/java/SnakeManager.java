@@ -15,7 +15,7 @@ public class SnakeManager {
     /**
      * 
      */
-    public void Terrain;
+    public Board  board;
 
 
 

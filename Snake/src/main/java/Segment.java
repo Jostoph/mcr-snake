@@ -18,7 +18,7 @@ public class Segment extends BaseHandler {
     /**
      * @param request
      */
-    public void Handle(void request) {
+    public void Handle(Request request) {
         // TODO implement here
     }
 

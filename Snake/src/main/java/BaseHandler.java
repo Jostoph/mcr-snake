@@ -22,32 +22,16 @@ public class BaseHandler implements Handler {
      */
     public Handler previous;
 
-    /**
-     * @param Handler
-     */
-    public void setNext(void Handler) {
+    @Override
+    public void setNext(Handler handler) {
         // TODO implement here
     }
 
-    /**
-     * @param request
-     */
-    public void Handle(void request) {
-        // TODO implement here
+    @Override
+    public void Handler(Request request) {
+
     }
 
-    /**
-     * @param Handler
-     */
-    public void setNext(void Handler) {
-        // TODO implement here
-    }
 
-    /**
-     * @param Request
-     */
-    public void Handler(void Request) {
-        // TODO implement here
-    }
 
 }

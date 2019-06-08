@@ -20,7 +20,7 @@ public class CountdownSegement extends Segment {
     /**
      * @param request
      */
-    public void Handle(void request) {
+    public void Handle(Request request) {
         // TODO implement here
     }
 
