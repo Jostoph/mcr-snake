@@ -1,15 +1,14 @@
-
-import java.util.*;
+package handler.SnakeHandler;
 
 /**
  * 
  */
-public class WallValidator extends BaseHandler {
+public class ColorTrapSegment extends ColorSegment {
 
     /**
      * Default constructor
      */
-    public WallValidator() {
+    public ColorTrapSegment() {
     }
 
     /**

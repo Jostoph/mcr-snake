@@ -1,16 +1,20 @@
-
-import java.util.*;
+package handler.SnakeHandler;
 
 /**
  * 
  */
-public class ColorScoreSegment extends ColorSegment {
+public class Head extends BaseHandler {
 
     /**
      * Default constructor
      */
-    public ColorScoreSegment() {
+    public Head() {
     }
+
+
+
+
+
 
     /**
      * @param request

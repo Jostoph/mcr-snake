@@ -1,6 +1,6 @@
+package handler.SnakeHandler;
 
 import java.awt.*;
-import java.util.*;
 
 /**
  * 

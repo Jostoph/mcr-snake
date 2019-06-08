@@ -1,15 +1,14 @@
-
-import java.util.*;
+package handler.SnakeHandler;
 
 /**
  * 
  */
-public class InputValidator extends BaseHandler {
+public class ColorScoreSegment extends ColorSegment {
 
     /**
      * Default constructor
      */
-    public InputValidator() {
+    public ColorScoreSegment() {
     }
 
     /**

@@ -1,17 +1,15 @@
-
-import java.util.*;
+package handler;
 
 /**
  * 
  */
-public class Tail extends BaseHandler {
+public class WallValidator extends BaseHandler {
 
     /**
      * Default constructor
      */
-    public Tail() {
+    public WallValidator() {
     }
-
 
     /**
      * @param request

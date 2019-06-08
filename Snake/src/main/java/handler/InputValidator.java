@@ -1,21 +1,15 @@
-
-import java.util.*;
+package handler;
 
 /**
  * 
  */
-public class Head extends BaseHandler {
+public class InputValidator extends BaseHandler {
 
     /**
      * Default constructor
      */
-    public Head() {
+    public InputValidator() {
     }
-
-
-
-
-
 
     /**
      * @param request

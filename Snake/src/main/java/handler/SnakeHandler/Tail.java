@@ -1,16 +1,16 @@
-
-import java.util.*;
+package handler.SnakeHandler;
 
 /**
  * 
  */
-public class ColorTrapSegment extends ColorSegment {
+public class Tail extends BaseHandler {
 
     /**
      * Default constructor
      */
-    public ColorTrapSegment() {
+    public Tail() {
     }
+
 
     /**
      * @param request
