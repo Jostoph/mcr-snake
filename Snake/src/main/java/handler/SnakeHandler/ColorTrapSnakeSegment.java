@@ -5,12 +5,12 @@ import request.Request;
 /**
  * 
  */
-public class ColorScoreSegment extends ColorSegment {
+public class ColorTrapSnakeSegment extends ColorSnakeSegment {
 
     /**
      * Default constructor
      */
-    public ColorScoreSegment() {
+    public ColorTrapSnakeSegment() {
     }
 
     /**

@@ -1,21 +1,17 @@
 package handler.SnakeHandler;
 
-import handler.BaseHandler;
 import request.Request;
 
 /**
  * 
  */
-public class Segment extends BaseHandler {
+public class ColorScoreSnakeSegment extends ColorSnakeSegment {
 
     /**
      * Default constructor
      */
-    public Segment() {
+    public ColorScoreSnakeSegment() {
     }
-
-
-
 
     /**
      * @param request

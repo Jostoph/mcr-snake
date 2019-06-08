@@ -4,7 +4,7 @@ import request.Request;
 /**
  * 
  */
-public class CountdownSegement extends Segment {
+public class CountdownSegement extends SnakeSegment {
 
     /**
      * Default constructor

@@ -7,12 +7,12 @@ import java.awt.*;
 /**
  * 
  */
-public class ColorSegment extends Segment {
+public class ColorSnakeSegment extends SnakeSegment {
 
     /**
      * Default constructor
      */
-    public ColorSegment() {
+    public ColorSnakeSegment() {
     }
 
     /**

@@ -6,7 +6,7 @@ import request.Request;
 /**
  * 
  */
-public class Tail extends BaseHandler {
+public class Tail extends SnakeSegment {
 
     /**
      * Default constructor
