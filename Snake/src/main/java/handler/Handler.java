@@ -3,14 +3,19 @@ package handler;
 import request.Request;
 
 /**
- * 
+ *
  */
 public interface Handler {
 
     /**
-     * @param handler
+     * @param next
      */
-    public void setNext(Handler handler);
+    public void setNext(Handler next);
+
+    /**
+     * @param previous
+     */
+    public void setPrevious(Handler previous);
 
     /**
      * @param request

@@ -1,5 +1,6 @@
 package handler.SnakeHandler;
 
+import handler.Handler;
 import request.Request;
 /**
  * 
@@ -7,15 +8,18 @@ import request.Request;
 public class CountdownSegement extends SnakeSegment {
 
     /**
-     * Default constructor
+     *
      */
-    public CountdownSegement() {
-    }
+    private int count;
 
     /**
-     * 
+     * @param previous the previous handler
+     * @param next     the next handler
      */
-    public int count;
+    public CountdownSegement(Handler previous, Handler next, int initialCount) {
+        super(previous, next);
+        this.count = initialCount;
+    }
 
     /**
      * @param request
@@ -31,4 +35,13 @@ public class CountdownSegement extends SnakeSegment {
         // TODO implement here
     }
 
+    @Override
+    public void setPrevious(Handler previous) {
+
+    }
+
+    @Override
+    public void display() {
+
+    }
 }
