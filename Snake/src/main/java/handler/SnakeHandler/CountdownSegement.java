@@ -15,16 +15,7 @@ public class CountdownSegement extends SnakeSegment {
      */
     private int count;
 
-    /**
-     *  default constructor
-     * @param previous
-     * @param next
-     * @param count
-     */
-    public CountdownSegement(SnakeSegment previous, SnakeSegment next, int count) {
-        super(previous, next);
-        this.count = count;
-    }
+
 
     /**
      * @param request

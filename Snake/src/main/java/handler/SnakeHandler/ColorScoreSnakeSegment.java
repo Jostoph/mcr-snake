@@ -6,15 +6,15 @@ import request.Request;
 import java.awt.*;
 
 /**
- * 
+ *
  */
 public class ColorScoreSnakeSegment extends ColorSnakeSegment {
     //TODO: information
     public static final String info = "JE SUIS UN SEGMENT de couleur ";
 
 
-    public ColorScoreSnakeSegment(SnakeSegment previous, SnakeSegment next, Color color) {
-        super(previous, next, color);
+    public ColorScoreSnakeSegment(Color color) {
+        super(color);
     }
 
     /**

@@ -18,6 +18,6 @@ public class DeplacementInputValidator extends InputValidator {
         if (request.getInput() == input) {
             request.getSnakeManager().setDeplacement(deplacement);
         }
-        next.Handler(request);
+        ((InputValidator) next).Handler(request);
     }
 }

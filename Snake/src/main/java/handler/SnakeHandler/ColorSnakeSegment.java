@@ -17,8 +17,8 @@ public class ColorSnakeSegment extends SnakeSegment {
      */
     public Color color;
 
-    public ColorSnakeSegment(SnakeSegment previous, SnakeSegment next, Color color) {
-        super(previous, next);
+    public ColorSnakeSegment(Color color) {
+
         this.color = color;
     }
 

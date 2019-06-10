@@ -18,11 +18,9 @@ public abstract class BaseHandler implements Handler {
     public Handler previous;
 
 
-
-
     @Override
     public void setNext(Handler next) {
-      this.next = next;
+        this.next = next;
     }
 
     @Override
