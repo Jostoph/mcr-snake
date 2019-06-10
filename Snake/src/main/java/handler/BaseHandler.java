@@ -33,6 +33,11 @@ public abstract class BaseHandler implements Handler {
     }
 
     @Override
+    public void setPrevious(Handler previous) {
+        this.previous = previous;
+    }
+
+    @Override
     public void Handler(Request request) {
 
     }

@@ -1,6 +1,7 @@
 package handler.SnakeHandler;
 
 import handler.BaseHandler;
+import handler.Handler;
 import request.Request;
 
 /**
@@ -8,12 +9,9 @@ import request.Request;
  */
 public class Tail extends SnakeSegment {
 
-    /**
-     * Default constructor
-     */
-    public Tail() {
+    public Tail(SnakeSegment previous, SnakeSegment next) {
+        super(previous, next);
     }
-
 
     /**
      * @param request
@@ -22,4 +20,9 @@ public class Tail extends SnakeSegment {
         // TODO implement here
     }
 
+
+    @Override
+    public void setPrevious(Handler previous) {
+
+    }
 }

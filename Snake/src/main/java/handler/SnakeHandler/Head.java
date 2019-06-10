@@ -5,16 +5,12 @@ import handler.Handler;
 import request.Request;
 
 /**
- * 
+ *
  */
 public class Head extends SnakeSegment {
 
 
-    /**
-     * @param previous the previous handler
-     * @param next     the next handler
-     */
-    public Head(Handler previous, Handler next) {
+    public Head(SnakeSegment previous, SnakeSegment next) {
         super(previous, next);
     }
 

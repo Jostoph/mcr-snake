@@ -13,12 +13,14 @@ public class CountdownSegement extends SnakeSegment {
     private int count;
 
     /**
-     * @param previous the previous handler
-     * @param next     the next handler
+     *  default constructor
+     * @param previous
+     * @param next
+     * @param count
      */
-    public CountdownSegement(Handler previous, Handler next, int initialCount) {
+    public CountdownSegement(SnakeSegment previous, SnakeSegment next, int count) {
         super(previous, next);
-        this.count = initialCount;
+        this.count = count;
     }
 
     /**
@@ -40,8 +42,5 @@ public class CountdownSegement extends SnakeSegment {
 
     }
 
-    @Override
-    public void display() {
 
-    }
 }

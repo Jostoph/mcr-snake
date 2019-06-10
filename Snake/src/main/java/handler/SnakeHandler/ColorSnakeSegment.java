@@ -9,10 +9,9 @@ import java.awt.*;
  */
 public class ColorSnakeSegment extends SnakeSegment {
 
-    /**
-     * Default constructor
-     */
-    public ColorSnakeSegment() {
+    public ColorSnakeSegment(SnakeSegment previous, SnakeSegment next, Color color) {
+        super(previous, next);
+        this.color = color;
     }
 
     /**
@@ -26,6 +25,7 @@ public class ColorSnakeSegment extends SnakeSegment {
     public void Handle(Request request) {
         // TODO implement here
     }
+
 
     /**
      * @param color

@@ -2,15 +2,15 @@ package handler.SnakeHandler;
 
 import request.Request;
 
+import java.awt.*;
+
 /**
  * 
  */
 public class ColorTrapSnakeSegment extends ColorSnakeSegment {
 
-    /**
-     * Default constructor
-     */
-    public ColorTrapSnakeSegment() {
+    public ColorTrapSnakeSegment(SnakeSegment previous, SnakeSegment next, Color color) {
+        super(previous, next, color);
     }
 
     /**
@@ -19,5 +19,7 @@ public class ColorTrapSnakeSegment extends ColorSnakeSegment {
     public void Handle(Request request) {
         // TODO implement here
     }
+
+
 
 }
