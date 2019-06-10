@@ -2,12 +2,14 @@ package handler.SnakeHandler;
 
 import handler.BaseHandler;
 import handler.Handler;
+import request.DisplayRequest;
 import request.Request;
 
 /**
- * 
+ *
  */
 public class Tail extends SnakeSegment {
+    public static final String info = "JE SUIS UNE QUEUE ";
 
     public Tail(SnakeSegment previous, SnakeSegment next) {
         super(previous, next);
@@ -22,7 +24,7 @@ public class Tail extends SnakeSegment {
 
 
     @Override
-    public void setPrevious(Handler previous) {
-
+    public void information(DisplayRequest request) {
+        request.addinfo(info);
     }
 }

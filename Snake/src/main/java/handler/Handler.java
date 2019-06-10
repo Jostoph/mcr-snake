@@ -1,5 +1,6 @@
 package handler;
 
+import request.InputRequest;
 import request.Request;
 
 /**
@@ -22,4 +23,5 @@ public interface Handler {
      */
     public void Handler(Request request);
 
+    void Handler(InputRequest request);
 }

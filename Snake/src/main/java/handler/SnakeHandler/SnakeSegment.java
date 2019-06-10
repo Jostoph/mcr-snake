@@ -1,38 +1,35 @@
 package handler.SnakeHandler;
 
 import handler.BaseHandler;
-import handler.Handler;
-import request.Displayable;
+import request.DisplayRequest;
 import request.Request;
-import request.RequestType;
 
-import static request.RequestType.DISPLAYREQUEST;
 
 /**
- * 
+ *
  */
-public abstract class SnakeSegment extends BaseHandler{
+public abstract class SnakeSegment extends BaseHandler {
 
     //TODO: pas sur que ca marche de caster dans une sous class les paramêtre
-    private SnakeSegment next;
-    /**
-     * @param previous the previous handler
-     * @param next     the next handler
-     */
-    public SnakeSegment(SnakeSegment previous, SnakeSegment next) {
-        super(previous, next);
-    }
+    SnakeSegment next;
+
 
     /**
-     * @param request
+     * @param request requete a Handle
      */
     public void Handle(Request request) {
-        if (request.getRequestType() == RequestType.DISPLAYREQUEST ){
+        if (request instanceof DisplayRequest) {
+            information((DisplayRequest) request);
         }
+
     }
 
 
-    public SnakeSegment next(){
+    public SnakeSegment next() {
         return this.next;
     }
+
+
+    //TODO: rename information
+    public abstract void information(DisplayRequest request);
 }

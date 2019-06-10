@@ -17,14 +17,7 @@ public abstract class BaseHandler implements Handler {
      */
     public Handler previous;
 
-    /**
-     * @param previous the previous handler
-     * @param next     the next handler
-     */
-    public BaseHandler(Handler previous, Handler next) {
-        this.previous = previous;
-        this.next = next;
-    }
+
 
 
     @Override

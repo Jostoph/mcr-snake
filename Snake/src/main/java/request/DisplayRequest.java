@@ -1,8 +1,16 @@
 package request;
 
-public class DisplayRequest {
+import java.util.ArrayList;
+import java.util.List;
 
-    DisplayRequest(){
-        
+public class DisplayRequest extends Request{
+    //TODO: information needed
+    private List<Object> information = new ArrayList<>();
+
+    //TODO: information to addinfo
+    public void addinfo(Object info) {
+        information.add(info);
     }
+
+
 }

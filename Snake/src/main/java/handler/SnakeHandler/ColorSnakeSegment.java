@@ -1,23 +1,27 @@
 package handler.SnakeHandler;
 
+import request.DisplayRequest;
 import request.Request;
 
 import java.awt.*;
 
 /**
- * 
+ *
  */
 public class ColorSnakeSegment extends SnakeSegment {
+    //TODO: information
+    public static final String info = "JE SUIS UN SEGMENT de couleur ";
+
+    /**
+     *
+     */
+    public Color color;
 
     public ColorSnakeSegment(SnakeSegment previous, SnakeSegment next, Color color) {
         super(previous, next);
         this.color = color;
     }
 
-    /**
-     * 
-     */
-    public  Color color;
 
     /**
      * @param request
@@ -30,8 +34,12 @@ public class ColorSnakeSegment extends SnakeSegment {
     /**
      * @param color
      */
-    public void HasSameColor( java.awt.Color color) {
+    public void HasSameColor(java.awt.Color color) {
         // TODO implement here + verivier si java.awt
     }
 
+    @Override
+    public void information(DisplayRequest request) {
+        request.addinfo(info + color);
+    }
 }
