@@ -29,7 +29,7 @@ public class SnakeManager {
         //TODO: de base apparait au millieu
         snake.add(new Coordinate(MAXBOARDLEGHT / 2, MAXBOARDWIDTH / 2));
         //ajoute une tête
-        head = new Head( null);
+        head = new Head( );
         //TODO: de base se déplace vers la gauche
         deplacement = Deplacement.LEFT;
     }
