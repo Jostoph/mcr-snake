@@ -1,6 +1,7 @@
 package handler.snakeHandler;
 
 import request.AddHandlerRequest;
+import request.DisplayRequest;
 import request.Request;
 import request.RequestType;
 
@@ -23,11 +24,18 @@ public class Head extends SnakeSegment {
 
     @Override
     public void handle(Request request) {
-        if(request.getRequestType() == RequestType.ADDHANDLERREQUEST){
-            SnakeSegment tmp = ((AddHandlerRequest)request).getHandler();
-            tmp.setPrevious(this);
-            tmp.setNext(this.next());
-            this.setNext(tmp);
+
+        switch (request.getRequestType()) {
+            case DISPLAYREQUEST:
+                ((DisplayRequest) request).addColor(this.color);
+                ((DisplayRequest) request).addShapeType(this.shapeType);
+                break;
+            case ADDHANDLERREQUEST:
+                SnakeSegment tmp = ((AddHandlerRequest) request).getHandler();
+                tmp.setPrevious(this);
+                tmp.setNext(this.next());
+                this.setNext(tmp);
+                break;
         }
 
         next().handle(request);
