@@ -7,13 +7,12 @@ import handler.snakeHandler.Tail;
 import manager.edible.Food;
 import request.AddHandlerRequest;
 import request.DisplayRequest;
-import request.Request;
 import request.SimpleColorRequest;
-import request.*;
 
 
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 
 /**
@@ -106,6 +105,14 @@ public class  SnakeManager {
 
     }
 
+    public List<Coordinate> getSnakeCoordinates() {
+        return snake;
+    }
+
+    public Map<Coordinate, Food> getFoodMap() {
+        return food;
+    }
+
     public DisplayRequest getDisplayRequest() {
         return displayRequest;
     }
@@ -127,7 +134,26 @@ public class  SnakeManager {
     }
 
     public void setDirection(Direction direction) {
-        this.direction = direction;
+
+        Direction impossible;
+
+        switch (direction) {
+            case UP:
+                impossible = Direction.DOWN;
+                break;
+            case DOWN:
+                impossible = Direction.UP;
+                break;
+            case LEFT:
+                impossible = Direction.RIGHT;
+                break;
+            default:
+                impossible = Direction.LEFT;
+        }
+
+        if(this.direction != impossible) {
+            this.direction = direction;
+        }
     }
 
     public double getSpeedMultiplicator() {
@@ -181,7 +207,7 @@ public class  SnakeManager {
             rnd = random.nextInt(10);
 
             if (rnd < 7) {
-                shapeType = ShapeType.CIRCLE;
+                shapeType = ShapeType.ROUND;
             } else if (rnd < 9) {
                 shapeType = ShapeType.TRIANGLE;
             } else {
@@ -196,7 +222,7 @@ public class  SnakeManager {
                         new Food(new SimpleColorRequest(color,1), shapeType) );
             } else {
                 food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
-                        new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE) ); // TOdo différencier
+                        new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.ROUND) ); // TOdo différencier
             }
             // Todo nique toi travis
         }

@@ -21,12 +21,12 @@ public class ColorAdd extends SnakeSegment {
      */
     public ColorAdd(SnakeSegment next, SnakeSegment previous, Color color) {
         super(next, previous, color);
-        shapeType = ShapeType.CIRCLE;
+        shapeType = ShapeType.ROUND;
     }
 
     public ColorAdd(Color color) {
         super(null, null, color);
-        shapeType = ShapeType.CIRCLE;
+        shapeType = ShapeType.ROUND;
     }
 
     @Override

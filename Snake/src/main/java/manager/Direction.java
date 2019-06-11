@@ -19,13 +19,13 @@ public enum Direction {
     DOWN {
         @Override
         public Coordinate toCoordinate() {
-            return new Coordinate(1, 0);
+            return new Coordinate(0, 1);
         }
     },
     RIGHT {
         @Override
         public Coordinate toCoordinate() {
-            return new Coordinate(0, 1);
+            return new Coordinate(1, 0);
         }
     };
 

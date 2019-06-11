@@ -1,10 +1,20 @@
 package view;
 
+import handler.snakeHandler.ShapeType;
+import manager.Coordinate;
+import manager.Direction;
 import manager.SnakeManager;
+import manager.edible.Food;
+import request.DisplayRequest;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.List;
+import java.util.Map;
 
 public class SnakeDisplayer {
 
@@ -14,6 +24,9 @@ public class SnakeDisplayer {
     private Timer timer;
     private int speed;
 
+    private int width;
+    private int height;
+    boolean test = true;
 
     private int scale = 20;
     private SnakeManager snakeManager;
@@ -25,10 +38,14 @@ public class SnakeDisplayer {
         timer.start();
         snakeManager = SnakeManager.getInstance();
         frame = new JFrame("Snake");
-        frame.setSize(snakeManager.getBoardWidth() * scale, snakeManager.getBoardHeight() * scale);
 
-        frame.addWindowListener(new WindowAdapter()
-        {
+        width = snakeManager.getBoardWidth() * scale;
+        height = snakeManager.getBoardHeight() * scale;
+
+        frame.setSize(width, height);
+
+        // method on close window
+        frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e)
             {
@@ -38,7 +55,23 @@ public class SnakeDisplayer {
             }
         });
 
-        panel = new CustomJPanel();
+        // key listener for directions
+        frame.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyChar() == 'w') {
+                    snakeManager.setDirection(Direction.UP);
+                } else if(e.getKeyChar() == 'a') {
+                    snakeManager.setDirection(Direction.LEFT);
+                } else if(e.getKeyChar() == 's') {
+                    snakeManager.setDirection(Direction.DOWN);
+                } else if(e.getKeyChar() == 'd') {
+                    snakeManager.setDirection(Direction.RIGHT);
+                }
+            }
+        });
+
+        panel = new CustomJPanel(width, height);
 
         frame.add(panel);
         frame.setVisible(true);
@@ -62,6 +95,9 @@ public class SnakeDisplayer {
             // update speed
             speed = (int) (speed * snakeManager.getSpeedMultiplicator());
 
+            // clear panel
+            panel.clearImage();
+
             // draw snake
             drawSnake();
 
@@ -80,10 +116,56 @@ public class SnakeDisplayer {
     }
 
     private void drawSnake() {
-        // TODO
+        Graphics2D g2d = (Graphics2D) panel.getGraphics();
+        DisplayRequest dr = snakeManager.getDisplayRequest();
+
+        List<Coordinate> snakeList = snakeManager.getSnakeCoordinates();
+
+        // draw head
+        g2d.setColor(Color.BLACK);
+        g2d.fillOval(snakeList.get(0).getX() * scale, snakeList.get(0).getY() * scale, 20, 20);
+
+        // draw body
+        drawSnakeBody(dr, g2d, snakeList);
+
+        // draw tail
+        // TODO add tail
     }
 
     private void drawFood() {
-        // TODO
+        Graphics2D g2d = (Graphics2D) panel.getGraphics();
+        Map<Coordinate, Food> foodMap = snakeManager.getFoodMap();
+
+        for(Coordinate c : foodMap.keySet()) {
+            // TODO draw food
+        }
+    }
+
+    private void drawSnakeBody(DisplayRequest dr, Graphics2D g2d, List<Coordinate> snakeList) {
+        List<Color> colors = dr.getColors();
+        List<ShapeType> shapeTypes = dr.getShapesTypes();
+
+        for(int i = 0; i < colors.size(); ++i) {
+            g2d.setColor(colors.get(i));
+            Coordinate c = snakeList.get(i + 1);
+            int x = c.getX() * scale;
+            int y = c.getY() * scale;
+            ShapeType type = shapeTypes.get(i);
+
+            switch (type) {
+                case SQUARE:
+                    g2d.fillRect(x, y, 20, 20);
+                    break;
+                case TRIANGLE:
+                    g2d.fillRoundRect(x, y, 20, 20, 5, 5); // TODO not a triangle
+                    break;
+                case CIRCLE:
+                    g2d.drawOval(x, y, 20,20);
+                    break;
+                default:
+                    g2d.fillOval(x, y, 20,20);
+
+            }
+        }
     }
 }

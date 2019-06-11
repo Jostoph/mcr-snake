@@ -8,7 +8,7 @@ public class Transformer extends SnakeSegment {
 
     public Transformer(SnakeSegment next, SnakeSegment previous) {
         super(next, previous);
-        shapeType = ShapeType.CIRCLE;
+        shapeType = ShapeType.ROUND;
         color = Color.BLACK;
     }
 
