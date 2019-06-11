@@ -32,7 +32,7 @@ public class  SnakeManager {
     private int boardHeight;
 
     private Direction direction;
-    private int speedMultiplicator;
+    private double speedMultiplicator;
 
     private int score;
     private boolean alive;
@@ -126,16 +126,28 @@ public class  SnakeManager {
         this.direction = direction;
     }
 
-    public int getSpeedMultiplicator() {
+    public double getSpeedMultiplicator() {
         return speedMultiplicator;
     }
 
-    public void setSpeedMultiplicator(int speed) {
+    public void setSpeedMultiplicator(double speed) {
         speedMultiplicator = speed;
+    }
+
+    public void incSpeedMultiplicator(double step) {
+        speedMultiplicator += step;
     }
 
     public void addPoints(int points) {
         score += points;
+
+        if(score < 0) {
+            alive = false;
+        }
+    }
+
+    public void remPoints(int points) {
+        score -= points;
 
         if(score < 0) {
             alive = false;

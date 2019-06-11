@@ -1,6 +1,8 @@
 package handler.snakeHandler;
 
+import request.AddHandlerRequest;
 import request.Request;
+import request.RequestType;
 
 /**
  * the head of the snake
@@ -21,6 +23,13 @@ public class Head extends SnakeSegment {
 
     @Override
     public void handle(Request request) {
+        if(request.getRequestType() == RequestType.ADDHANDLERREQUEST){
+            SnakeSegment tmp = ((AddHandlerRequest)request).getHandler();
+            tmp.setPrevious(this);
+            tmp.setNext(this.next());
+            this.setNext(tmp);
+        }
 
+        next().handle(request);
     }
 }

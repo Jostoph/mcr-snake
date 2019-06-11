@@ -15,6 +15,6 @@ public class Tail extends SnakeSegment {
 
     @Override
     public void handle(Request request) {
-
+        return;
     }
 }
