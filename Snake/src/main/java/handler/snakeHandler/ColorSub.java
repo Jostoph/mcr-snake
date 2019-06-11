@@ -30,13 +30,13 @@ public class ColorSub extends SnakeSegment {
             this.next().setPrevious(this.previous());
             next().handle(request);
         }
-        
+
         switch (request.getRequestType()) {
             case DISPLAYREQUEST:
                 break;
             case SIMPLECOLORREQUEST:
                 if (((SimpleColorRequest) request).getColor() == this.getColor()) {
-                    SnakeManager.getInstance().remPoints(((MutiColorRequest) request).getScore());
+                    SnakeManager.getInstance().remPoints(((SimpleColorRequest) request).getScore());
                     countdown--;
                 }
                 break;
