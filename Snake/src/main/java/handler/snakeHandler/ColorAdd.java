@@ -1,6 +1,10 @@
 package handler.snakeHandler;
 
+import manager.SnakeManager;
+import request.DisplayRequest;
+import request.MutiColorRequest;
 import request.Request;
+import request.SimpleColorRequest;
 
 import java.awt.*;
 
@@ -20,8 +24,34 @@ public class ColorAdd extends SnakeSegment {
         shapeType = ShapeType.CIRCLE;
     }
 
+    public ColorAdd(Color color) {
+        super(null, null, color);
+        shapeType = ShapeType.CIRCLE;
+    }
+
     @Override
     public void handle(Request request) {
+        switch (request.getRequestType()) {
+            case DISPLAYREQUEST:
+                ((DisplayRequest) request).addColor(this.color);
+                ((DisplayRequest) request).addShapeType(this.shapeType);
+                break;
+            case SIMPLECOLORREQUEST:
+                if (((SimpleColorRequest) request).getColor() == this.getColor()) {
+                    SnakeManager.getInstance().addPoints(((SimpleColorRequest) request).getScore());
+                }
+                break;
 
+            case MULTICOLORREQUEST:
+                for (Color color : ((MutiColorRequest) request).getColors()) {
+                    if (color == this.getColor()) {
+                        SnakeManager.getInstance().addPoints(((MutiColorRequest) request).getScore());
+                    }
+                }
+                break;
+
+
+        }
+        next().handle(request);
     }
 }

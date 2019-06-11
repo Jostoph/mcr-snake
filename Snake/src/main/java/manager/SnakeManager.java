@@ -1,11 +1,18 @@
 package manager;
 
+import handler.snakeHandler.ColorAdd;
 import handler.snakeHandler.Head;
+import handler.snakeHandler.ShapeType;
 import handler.snakeHandler.Tail;
 import manager.edible.Food;
+import request.AddHandlerRequest;
 import request.DisplayRequest;
+import request.Request;
+import request.SimpleColorRequest;
+import request.*;
 
 
+import java.awt.*;
 import java.util.*;
 
 
@@ -25,7 +32,7 @@ public class  SnakeManager {
     private int boardHeight;
 
     private Direction direction;
-    private int speedMultiplicator;
+    private double speedMultiplicator;
 
     private int score;
     private boolean alive;
@@ -119,12 +126,16 @@ public class  SnakeManager {
         this.direction = direction;
     }
 
-    public int getSpeedMultiplicator() {
+    public double getSpeedMultiplicator() {
         return speedMultiplicator;
     }
 
-    public void setSpeedMultiplicator(int speed) {
+    public void setSpeedMultiplicator(double speed) {
         speedMultiplicator = speed;
+    }
+
+    public void incSpeedMultiplicator(double step) {
+        speedMultiplicator += step;
     }
 
     public void addPoints(int points) {
@@ -132,6 +143,58 @@ public class  SnakeManager {
 
         if(score < 0) {
             alive = false;
+        }
+    }
+
+    public void remPoints(int points) {
+        score -= points;
+
+        if(score < 0) {
+            alive = false;
+        }
+    }
+
+    private void addFood () {
+        Random random = new Random();
+
+        if (food.size() < 10) {
+
+            Integer rnd = random.nextInt(4);
+            Color color = Color.RED;
+            ShapeType shapeType;
+
+            switch (rnd) {
+                case 1: color = Color.RED;
+                    break;
+                case 2: color = Color.BLUE;
+                    break;
+                case 3: color = Color.GREEN;
+                    break;
+                case 4: color = Color.YELLOW;
+                    break;
+            }
+
+            rnd = random.nextInt(10);
+
+            if (rnd < 7) {
+                shapeType = ShapeType.CIRCLE;
+            } else if (rnd < 9) {
+                shapeType = ShapeType.TRIANGLE;
+            } else {
+                shapeType = ShapeType.SQUARE;
+            }
+
+            rnd = random.nextInt(100);
+
+            if (rnd < 91) {
+                // todo, change stuff
+                food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
+                        new Food(new SimpleColorRequest(color,1), shapeType) );
+            } else {
+                food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
+                        new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE) ); // TOdo différencier
+            }
+            // Todo nique toi travis
         }
     }
 }
