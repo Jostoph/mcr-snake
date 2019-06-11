@@ -16,15 +16,14 @@ public class  SnakeManager {
 
     private static SnakeManager instance = null;
 
-    //TODO: linkedList pour avoir getLast?
     private LinkedList<Coordinate> snake = new LinkedList<>();
     private Map<Coordinate, Food> food = new HashMap<>();
     private Head head;
     private DisplayRequest displayRequest;
 
-    //TODO: edit les tailles
-    private static final int MAXBOARDWIDTH = 100;
-    private static final int MAXBOARDLEGHT = 100;
+    private int boardWidth;
+    private int boardHeight;
+
     private Direction direction;
     private int speedMultiplicator;
 
@@ -44,7 +43,10 @@ public class  SnakeManager {
     public SnakeManager() {
         //TODO: de base apparait au millieu
         // TODO : ajouter la coord de la queue ???
-        snake.add(new Coordinate(MAXBOARDLEGHT / 2, MAXBOARDWIDTH / 2));
+        boardHeight = 100;
+        boardWidth = 100;
+
+        snake.add(new Coordinate(boardWidth / 2, boardHeight / 2));
         //ajoute une tête
         head = new Head(new Tail(head));
         //TODO: de base se déplace vers la gauche
@@ -84,8 +86,8 @@ public class  SnakeManager {
         if(food.containsKey(nextPlace)){
             // C'est de la bouffe
             head.handle(this.food.get(nextPlace).getRequest());
-        } else if(  nextPlace.getX() < 0 || nextPlace.getX() > MAXBOARDWIDTH ||
-                    nextPlace.getY() < 0 || nextPlace.getY() > MAXBOARDLEGHT){
+        } else if(  nextPlace.getX() < 0 || nextPlace.getX() > boardWidth ||
+                    nextPlace.getY() < 0 || nextPlace.getY() > boardHeight){
             // Out of bond -> game over
             alive = false;
         } else if( snake.contains(nextPlace)){
@@ -99,6 +101,14 @@ public class  SnakeManager {
 
     public DisplayRequest getDisplayRequest() {
         return displayRequest;
+    }
+
+    public int getBoardWidth() {
+        return boardWidth;
+    }
+
+    public int getBoardHeight() {
+        return boardHeight;
     }
 
     public boolean isAlive() {
