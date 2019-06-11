@@ -47,11 +47,11 @@ public class  SnakeManager {
     /**
      * Default constructor
      */
-    public SnakeManager() {
+    private SnakeManager() {
         //TODO: de base apparait au millieu
         // TODO : ajouter la coord de la queue ???
-        boardHeight = 100;
-        boardWidth = 100;
+        boardHeight = 40;
+        boardWidth = 40;
 
         snake.add(new Coordinate(boardWidth / 2, boardHeight / 2));
         //ajoute une tête
@@ -120,6 +120,10 @@ public class  SnakeManager {
 
     public boolean isAlive() {
         return alive;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public void setDirection(Direction direction) {
