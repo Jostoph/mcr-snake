@@ -1,11 +1,15 @@
 package manager;
 
 import handler.snakeHandler.Head;
+import handler.snakeHandler.ShapeType;
 import handler.snakeHandler.Tail;
 import manager.edible.Food;
 import request.DisplayRequest;
+import request.Request;
+import request.SimpleColorRequest;
 
 
+import java.awt.*;
 import java.util.*;
 
 
@@ -105,6 +109,19 @@ public class SnakeManager {
 
         if(score < 0) {
             alive = false;
+        }
+    }
+
+    private void addFood () {
+        Random random = new Random();
+
+        if (food.size() < 10) {
+
+            if (random.nextInt(100) < 51) {
+                // todo, change stuff
+                food.put(new Food(new SimpleColorRequest(Color.RED), ShapeType.CIRCLE),
+                        new Coordinate(random.nextInt(MAXBOARDWIDTH), random.nextInt(MAXBOARDLEGHT) ));
+            }
         }
     }
 }
