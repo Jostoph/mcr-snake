@@ -1,5 +1,8 @@
 package request;
 
+import handler.snakeHandler.ShapeType;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,19 +10,27 @@ import java.util.List;
  * this class represente a display request
  */
 public class DisplayRequest extends Request {
-    //TODO: information needed
-    private List<Object> information = new ArrayList<>();
+
+    private List<Color> colors = new ArrayList<>();
+    private List<ShapeType> shapesTypes = new ArrayList<>();
 
     public DisplayRequest() {
         super(RequestType.DISPLAYREQUEST);
     }
 
-    //TODO: information to addinfo
-    public void addinfo(Object info) {
-        information.add(info);
+    public void addColor(Color color) {
+        colors.add(color);
     }
 
-    public List<Object> getInformation() {
-        return information;
+    public void addShapeType(ShapeType shapeType) {
+        shapesTypes.add(shapeType);
+    }
+
+    public List<Color> getColors() {
+        return colors;
+    }
+
+    public List<ShapeType> getShapesTypes() {
+        return shapesTypes;
     }
 }

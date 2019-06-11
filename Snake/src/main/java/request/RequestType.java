@@ -5,6 +5,11 @@ package request;
  */
 public enum RequestType {
     DISPLAYREQUEST,
-    INPUTREQUEST
-
+    SIMPLECOLOR,
+    MULTICOLOR,
+    ADDMULTIPLICATOR,
+    ADDTRANSFORMER,
+    ADDCOLORADD,
+    ADDCOLORSPEED,
+    ADDCOLORSUB
 }
