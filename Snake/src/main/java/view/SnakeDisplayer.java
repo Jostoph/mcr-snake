@@ -52,12 +52,12 @@ public class SnakeDisplayer {
             System.out.println("Game Over");
 
             // update score and game over
-            updateTitle("Game Over [" + snakeManager.getScore() + "]");
+            updateTitle("Game Over [ " + snakeManager.getScore() + " ]");
 
             timer.stop();
         } else {
             // update score
-            updateTitle("[" + snakeManager.getScore() + "]");
+            updateTitle("[ " + snakeManager.getScore() + " ]");
 
             // update speed
             speed = (int) (speed * snakeManager.getSpeedMultiplicator());
