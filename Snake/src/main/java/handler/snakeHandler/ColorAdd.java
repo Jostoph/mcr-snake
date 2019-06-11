@@ -24,6 +24,11 @@ public class ColorAdd extends SnakeSegment {
         shapeType = ShapeType.CIRCLE;
     }
 
+    public ColorAdd(Color color) {
+        super(null, null, color);
+        shapeType = ShapeType.CIRCLE;
+    }
+
     @Override
     public void handle(Request request) {
         switch (request.getRequestType()) {
