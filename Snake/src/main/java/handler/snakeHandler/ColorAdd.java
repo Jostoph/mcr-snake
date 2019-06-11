@@ -41,6 +41,7 @@ public class ColorAdd extends SnakeSegment {
                 for (Color color : ((MutiColorRequest) request).getColors()) {
                     if (color == this.getColor()) {
                         SnakeManager.getInstance().addPoints(((MutiColorRequest) request).getScore());
+                        ((MutiColorRequest) request).getColors().remove(color);
                     }
                 }
                 break;
