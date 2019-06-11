@@ -1,23 +1,38 @@
 package handler.SnakeHandler;
 
+import request.DisplayRequest;
 import request.Request;
 
+import java.awt.*;
+
 /**
- * 
+ *
  */
 public class ColorTrapSnakeSegment extends ColorSnakeSegment {
+    //TODO : christoph
+    private static final String info = "JE SUIS UN SEGMENT COUNTDOWN de couleur ";
 
     /**
-     * Default constructor
+     * constructor
+     *
+     * @param next     next handler
+     * @param previous setPrevious handler
+     * @param color    the color of this specific segment
      */
-    public ColorTrapSnakeSegment() {
+    public ColorTrapSnakeSegment(SnakeSegment next, SnakeSegment previous, Color color) {
+        super(next, previous, color);
     }
 
-    /**
-     * @param request
-     */
-    public void Handle(Request request) {
-        // TODO implement here
+    @Override
+    public void handle(Request request) {
+
     }
+
+    //TODO : christoph
+    @Override
+    public void information(DisplayRequest request) {
+        request.addinfo(info + color);
+    }
+
 
 }

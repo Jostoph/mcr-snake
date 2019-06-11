@@ -1,29 +1,33 @@
 package handler.SnakeHandler;
 
-import handler.BaseHandler;
+import request.DisplayRequest;
 import request.Request;
 
 /**
- * 
+ * the head of the snake
  */
 public class Head extends SnakeSegment {
+    //TODO: information
+    public static final String info = "JE SUIS UNE TETE DE SERPENT";
 
     /**
-     * Default constructor
+     * constructor, previous is always null
+     *
+     * @param next the next handler
      */
-    public Head() {
+    public Head(SnakeSegment next) {
+        // Head always first segment
+        super(next, null);
     }
 
 
-
-
-
-
-    /**
-     * @param request
-     */
-    public void Handle(Request request) {
-        // TODO implement here
+    @Override
+    public void information(DisplayRequest request) {
+        request.addinfo(info);
     }
 
+    @Override
+    public void handle(Request request) {
+
+    }
 }
