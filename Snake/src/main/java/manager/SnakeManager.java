@@ -176,10 +176,10 @@ public class  SnakeManager {
 
             if (rnd < 91) {
                 // todo, change stuff
-                food.put(new Coordinate(random.nextInt(MAXBOARDWIDTH), random.nextInt(MAXBOARDLEGHT)),
+                food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
                         new Food(new SimpleColorRequest(color), shapeType) );
             } else {
-                food.put(new Coordinate(random.nextInt(MAXBOARDWIDTH), random.nextInt(MAXBOARDLEGHT)),
+                food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
                         new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE) ); // TOdo différencier
             }
         }
