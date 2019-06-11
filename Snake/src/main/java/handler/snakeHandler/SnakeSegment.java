@@ -1,9 +1,7 @@
 package handler.snakeHandler;
 
 import handler.DoubleLinkedHandler;
-import request.DisplayRequest;
-import request.Request;
-import request.RequestType;
+
 
 import java.awt.*;
 
@@ -37,6 +35,9 @@ public abstract class SnakeSegment implements DoubleLinkedHandler {
         this.next = next;
         this.previous = previous;
         this.color = color;
+        //insertion on the list of segment
+        previous.setNext(this);
+        next.setPrevious(this);
     }
 
     public SnakeSegment(SnakeSegment next, SnakeSegment previous) {

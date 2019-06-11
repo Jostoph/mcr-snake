@@ -22,6 +22,6 @@ public class ColorSub extends SnakeSegment {
 
     @Override
     public void handle(Request request) {
-
+        
     }
 }

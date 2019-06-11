@@ -4,6 +4,9 @@ import request.Request;
 
 import java.awt.*;
 
+/**
+ *
+ */
 public class ColorAdd extends SnakeSegment {
 
     /**

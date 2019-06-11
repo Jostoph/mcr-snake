@@ -22,6 +22,5 @@ public class ColorSpeed extends SnakeSegment {
 
     @Override
     public void handle(Request request) {
-
     }
 }
