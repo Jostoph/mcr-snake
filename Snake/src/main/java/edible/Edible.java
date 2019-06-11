@@ -1,4 +1,4 @@
-package Edible;
+package edible;
 
 public abstract class Edible {
 }

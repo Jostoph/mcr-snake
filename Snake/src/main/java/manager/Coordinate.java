@@ -1,4 +1,4 @@
-package Manager;
+package manager;
 
 /**
  * this class implement a eulerien coordinate
