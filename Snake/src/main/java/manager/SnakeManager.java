@@ -86,8 +86,8 @@ public class  SnakeManager {
         if(food.containsKey(nextPlace)){
             // C'est de la bouffe
             head.handle(this.food.get(nextPlace).getRequest());
-        } else if(  nextPlace.getX() < 0 || nextPlace.getX() > MAXBOARDWIDTH ||
-                    nextPlace.getY() < 0 || nextPlace.getY() > MAXBOARDLEGHT){
+        } else if(  nextPlace.getX() < 0 || nextPlace.getX() > boardWidth ||
+                    nextPlace.getY() < 0 || nextPlace.getY() > boardHeight){
             // Out of bond -> game over
             alive = false;
         } else if( snake.contains(nextPlace)){
