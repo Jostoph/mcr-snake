@@ -182,6 +182,7 @@ public class  SnakeManager {
                 food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
                         new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE) ); // TOdo différencier
             }
+            // Todo nique toi travis
         }
     }
 }
