@@ -2,6 +2,7 @@ package handler.SnakeHandler;
 
 import request.DisplayRequest;
 import request.Request;
+
 import java.awt.*;
 
 /**
@@ -12,19 +13,16 @@ public class ColorScoreSnakeSegment extends ColorSnakeSegment {
     public static final String info = "JE SUIS UN SEGMENT de couleur ";
 
     /**
-     *  constructor
-     * @param next next handler
-     * @param previous previous handler
-     * @param color the color of this specific segment
+     * constructor
+     *
+     * @param next     next handler
+     * @param previous setPrevious handler
+     * @param color    the color of this specific segment
      */
     public ColorScoreSnakeSegment(SnakeSegment next, SnakeSegment previous, Color color) {
         super(next, previous, color);
     }
 
-
-    /**
-     * @param request request pass to the handle
-     */
     public void Handle(Request request) {
         // TODO implement here
     }

@@ -3,7 +3,10 @@ package request;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisplayRequest extends Request{
+/**
+ * this class represente a display request
+ */
+public class DisplayRequest extends Request {
     //TODO: information needed
     private List<Object> information = new ArrayList<>();
 

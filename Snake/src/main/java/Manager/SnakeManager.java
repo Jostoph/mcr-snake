@@ -10,7 +10,7 @@ import java.util.*;
 
 
 /**
- *
+ * this class manage the snake
  */
 public class SnakeManager {
 
@@ -50,7 +50,7 @@ public class SnakeManager {
             snake.remove(snake.getLast());
     }
 
-    void nextTurn(){
+    void nextTurn() {
         //TODO: utilser avec direction
     }
 

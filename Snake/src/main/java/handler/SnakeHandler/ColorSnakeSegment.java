@@ -21,7 +21,7 @@ public class ColorSnakeSegment extends SnakeSegment {
      * constructor
      *
      * @param next     next handler
-     * @param previous previous handler
+     * @param previous setPrevious handler
      * @param color    the color of this specific segment
      */
     public ColorSnakeSegment(SnakeSegment next, SnakeSegment previous, Color color) {
@@ -31,6 +31,7 @@ public class ColorSnakeSegment extends SnakeSegment {
 
     /**
      * test if a color is the same than segment's color
+     *
      * @param color color to test
      * @return true if is the same color
      */
@@ -45,8 +46,4 @@ public class ColorSnakeSegment extends SnakeSegment {
         request.addinfo(info + color);
     }
 
-    @Override
-    public void handle(Request request) {
-
-    }
 }

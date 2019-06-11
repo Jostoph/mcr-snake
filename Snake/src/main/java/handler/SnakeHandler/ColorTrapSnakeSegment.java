@@ -13,21 +13,19 @@ public class ColorTrapSnakeSegment extends ColorSnakeSegment {
     private static final String info = "JE SUIS UN SEGMENT COUNTDOWN de couleur ";
 
     /**
-     *  constructor
-     * @param next next handler
-     * @param previous previous handler
-     * @param color the color of this specific segment
+     * constructor
+     *
+     * @param next     next handler
+     * @param previous setPrevious handler
+     * @param color    the color of this specific segment
      */
     public ColorTrapSnakeSegment(SnakeSegment next, SnakeSegment previous, Color color) {
         super(next, previous, color);
     }
 
+    @Override
+    public void handle(Request request) {
 
-    /**
-     * @param request
-     */
-    public void Handle(Request request) {
-        // TODO implement here
     }
 
     //TODO : christoph

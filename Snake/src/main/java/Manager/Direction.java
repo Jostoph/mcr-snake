@@ -1,5 +1,8 @@
 package Manager;
 
+/**
+ * this enum represente all direction we have
+ */
 public enum Direction {
     UP {
         @Override
@@ -26,5 +29,10 @@ public enum Direction {
         }
     };
 
+    /**
+     * give the coordonate correspond to direction
+     *
+     * @return coordonate
+     */
     public abstract Coordinate toCoordinate();
 }

@@ -7,28 +7,27 @@ import request.RequestType;
 
 
 /**
- *
+ * this class implement a snake segment
  */
 public abstract class SnakeSegment implements DoubleLinkedHandler {
-
-    //TODO: pas sur que ca marche de caster dans une sous class les paramêtre
+    /**
+     * the next handler
+     */
     private DoubleLinkedHandler next;
+    /**
+     * the setPrevious handler
+     */
     private DoubleLinkedHandler previous;
 
+    /**
+     * constructor
+     *
+     * @param next     the next handler
+     * @param previous the setPrevious handler
+     */
     public SnakeSegment(SnakeSegment next, SnakeSegment previous) {
         this.next = next;
         this.previous = previous;
-    }
-
-    /**
-     * @param request requete a Handle
-     */
-    @Override
-    public void handle(Request request) {
-        if (request.getRequestType() == RequestType.DISPLAYREQUEST) {
-            information((DisplayRequest) request);
-        }
-
     }
 
     @Override
@@ -42,7 +41,7 @@ public abstract class SnakeSegment implements DoubleLinkedHandler {
     }
 
     @Override
-    public DoubleLinkedHandler getPrevious() {
+    public DoubleLinkedHandler previous() {
         return previous;
     }
 
@@ -50,6 +49,15 @@ public abstract class SnakeSegment implements DoubleLinkedHandler {
     public void setPrevious(DoubleLinkedHandler previous) {
         this.previous = previous;
     }
+
+    @Override
+    public void handle(Request request) {
+        if (request.getRequestType() == RequestType.DISPLAYREQUEST) {
+            information((DisplayRequest) request);
+        }
+
+    }
+
 
     //TODO: rename information
     public abstract void information(DisplayRequest request);
