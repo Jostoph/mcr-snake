@@ -1,4 +1,4 @@
-package handler.SnakeHandler;
+package handler.snakeHandler;
 
 import handler.DoubleLinkedHandler;
 import request.DisplayRequest;

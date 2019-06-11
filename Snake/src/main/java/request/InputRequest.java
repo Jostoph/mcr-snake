@@ -1,6 +1,6 @@
 package request;
 
-import Manager.SnakeManager;
+import manager.SnakeManager;
 
 public class InputRequest {
     //TODO class de l'input ?

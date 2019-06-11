@@ -1,4 +1,4 @@
-package Manager;
+package manager;
 
 /**
  * this enum represente all direction we have

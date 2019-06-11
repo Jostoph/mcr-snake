@@ -1,8 +1,8 @@
-package Manager;
+package manager;
 
-import Edible.Edible;
-import handler.SnakeHandler.Head;
-import handler.SnakeHandler.Tail;
+import edible.Edible;
+import handler.snakeHandler.Head;
+import handler.snakeHandler.Tail;
 import request.DisplayRequest;
 
 

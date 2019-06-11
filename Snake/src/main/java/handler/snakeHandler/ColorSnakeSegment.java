@@ -1,7 +1,6 @@
-package handler.SnakeHandler;
+package handler.snakeHandler;
 
 import request.DisplayRequest;
-import request.Request;
 
 import java.awt.*;
 
