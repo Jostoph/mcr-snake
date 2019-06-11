@@ -1,18 +1,18 @@
 package request;
 
-import java.util.logging.Handler;
+import handler.snakeHandler.SnakeSegment;
 
 public class AddHandlerRequest implements Request {
 
-    private Handler handler;
+    private SnakeSegment snakeSegment;
 
-    public AddHandlerRequest(Handler handler) {
-        this.handler = handler;
+    public AddHandlerRequest(SnakeSegment snakeSegment) {
+        this.snakeSegment = snakeSegment;
     }
 
 
-    public Handler getHandler() {
-        return handler;
+    public SnakeSegment getHandler() {
+        return snakeSegment;
     }
 
     @Override
