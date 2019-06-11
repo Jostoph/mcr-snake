@@ -16,13 +16,13 @@ import java.util.*;
 /**
  * this class manage the snake
  */
-public class SnakeManager {
+public class  SnakeManager {
 
     private static SnakeManager instance = null;
 
     //TODO: linkedList pour avoir getLast?
     private LinkedList<Coordinate> snake = new LinkedList<>();
-    private Map<Food, Coordinate> food = new HashMap<>();
+    private Map<Coordinate, Food> food = new HashMap<>();
     private Head head;
     private DisplayRequest displayRequest;
 
@@ -82,6 +82,23 @@ public class SnakeManager {
 
     public void nextTurn() {
         //TODO: utilser avec direction
+        Coordinate nextPlace = new Coordinate(snake.getFirst().getX() + direction.toCoordinate().getX(),
+                snake.getFirst().getY() + direction.toCoordinate().getY());
+
+        if(food.containsKey(nextPlace)){
+            // C'est de la bouffe
+            head.handle(this.food.get(nextPlace).getRequest());
+        } else if(  nextPlace.getX() < 0 || nextPlace.getX() > MAXBOARDWIDTH ||
+                    nextPlace.getY() < 0 || nextPlace.getY() > MAXBOARDLEGHT){
+            // Out of bond -> game over
+            alive = false;
+        } else if( snake.contains(nextPlace)){
+            // eating itself -> game over
+            alive = false;
+        } else {
+            move();
+        }
+
     }
 
     public DisplayRequest getDisplayRequest() {
