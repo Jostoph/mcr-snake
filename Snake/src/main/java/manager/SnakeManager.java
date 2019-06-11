@@ -19,7 +19,7 @@ import java.util.*;
 /**
  * this class manage the snake
  */
-public class  SnakeManager {
+public class SnakeManager {
 
     private static SnakeManager instance = null;
 
@@ -38,7 +38,7 @@ public class  SnakeManager {
     private boolean alive;
 
     public static SnakeManager getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new SnakeManager();
         }
         return instance;
@@ -54,6 +54,8 @@ public class  SnakeManager {
         boardWidth = 40;
 
         snake.add(new Coordinate(boardWidth / 2, boardHeight / 2));
+        snake.add(new Coordinate(boardWidth / 2 + 1, boardHeight / 2));
+
         //ajoute une tête
         head = new Head(new Tail(head));
         //TODO: de base se déplace vers la gauche
@@ -90,14 +92,14 @@ public class  SnakeManager {
         Coordinate nextPlace = new Coordinate(snake.getFirst().getX() + direction.toCoordinate().getX(),
                 snake.getFirst().getY() + direction.toCoordinate().getY());
 
-        if(food.containsKey(nextPlace)){
+        if (food.containsKey(nextPlace)) {
             // C'est de la bouffe
             head.handle(this.food.get(nextPlace).getRequest());
-        } else if(  nextPlace.getX() < 0 || nextPlace.getX() > boardWidth ||
-                    nextPlace.getY() < 0 || nextPlace.getY() > boardHeight){
+        } else if (nextPlace.getX() < 0 || nextPlace.getX() > boardWidth ||
+                nextPlace.getY() < 0 || nextPlace.getY() > boardHeight) {
             // Out of bond -> game over
             alive = false;
-        } else if( snake.contains(nextPlace)){
+        } else if (snake.contains(nextPlace)) {
             // eating itself -> game over
             alive = false;
         } else {
@@ -145,7 +147,7 @@ public class  SnakeManager {
     public void addPoints(int points) {
         score += points;
 
-        if(score < 0) {
+        if (score < 0) {
             alive = false;
         }
     }
@@ -153,12 +155,12 @@ public class  SnakeManager {
     public void remPoints(int points) {
         score -= points;
 
-        if(score < 0) {
+        if (score < 0) {
             alive = false;
         }
     }
 
-    private void addFood () {
+    private void addFood() {
         Random random = new Random();
 
         if (food.size() < 10) {
@@ -168,13 +170,17 @@ public class  SnakeManager {
             ShapeType shapeType;
 
             switch (rnd) {
-                case 1: color = Color.RED;
+                case 1:
+                    color = Color.RED;
                     break;
-                case 2: color = Color.BLUE;
+                case 2:
+                    color = Color.BLUE;
                     break;
-                case 3: color = Color.GREEN;
+                case 3:
+                    color = Color.GREEN;
                     break;
-                case 4: color = Color.YELLOW;
+                case 4:
+                    color = Color.YELLOW;
                     break;
             }
 
@@ -193,10 +199,10 @@ public class  SnakeManager {
             if (rnd < 91) {
                 // todo, change stuff
                 food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
-                        new Food(new SimpleColorRequest(color,1), shapeType) );
+                        new Food(new SimpleColorRequest(color, 1), shapeType));
             } else {
                 food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
-                        new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE) ); // TOdo différencier
+                        new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE)); // TOdo différencier
             }
             // Todo nique toi travis
         }

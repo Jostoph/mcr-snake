@@ -1,5 +1,6 @@
 package handler.snakeHandler;
 
+import request.DisplayRequest;
 import request.Request;
 
 /**
@@ -15,6 +16,12 @@ public class Tail extends SnakeSegment {
 
     @Override
     public void handle(Request request) {
-        return;
+
+        switch (request.getRequestType()) {
+            case DISPLAYREQUEST:
+                ((DisplayRequest) request).addColor(this.color);
+                ((DisplayRequest) request).addShapeType(this.shapeType);
+                break;
+        }
     }
 }
