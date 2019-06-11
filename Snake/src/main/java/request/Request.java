@@ -1,6 +1,8 @@
 package request;
 
+// note : can be of TYPE -> ADDTRANSFORMER
 public class Request {
+
     private RequestType requestType;
 
     public Request(RequestType requestType) {

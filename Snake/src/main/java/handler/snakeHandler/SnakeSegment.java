@@ -5,11 +5,18 @@ import request.DisplayRequest;
 import request.Request;
 import request.RequestType;
 
+import java.awt.*;
+
 
 /**
  * this class implement a snake segment
  */
 public abstract class SnakeSegment implements DoubleLinkedHandler {
+
+    protected Color color;
+
+    protected ShapeType shapeType;
+
     /**
      * the next handler
      */
@@ -19,12 +26,19 @@ public abstract class SnakeSegment implements DoubleLinkedHandler {
      */
     private DoubleLinkedHandler previous;
 
+
     /**
      * constructor
      *
      * @param next     the next handler
      * @param previous the setPrevious handler
      */
+    public SnakeSegment(SnakeSegment next, SnakeSegment previous, Color color) {
+        this.next = next;
+        this.previous = previous;
+        this.color = color;
+    }
+
     public SnakeSegment(SnakeSegment next, SnakeSegment previous) {
         this.next = next;
         this.previous = previous;
@@ -50,15 +64,11 @@ public abstract class SnakeSegment implements DoubleLinkedHandler {
         this.previous = previous;
     }
 
-    @Override
-    public void handle(Request request) {
-        if (request.getRequestType() == RequestType.DISPLAYREQUEST) {
-            information((DisplayRequest) request);
-        }
-
+    public Color getColor() {
+        return color;
     }
 
-
-    //TODO: rename information
-    public abstract void information(DisplayRequest request);
+    public ShapeType getShapeType() {
+        return shapeType;
+    }
 }
