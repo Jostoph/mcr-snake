@@ -9,14 +9,11 @@ import java.util.List;
 /**
  * this class represente a display request
  */
-public class DisplayRequest extends Request {
+public class DisplayRequest implements Request {
 
     private List<Color> colors = new ArrayList<>();
     private List<ShapeType> shapesTypes = new ArrayList<>();
 
-    public DisplayRequest() {
-        super(RequestType.DISPLAYREQUEST);
-    }
 
     public void addColor(Color color) {
         colors.add(color);
@@ -32,5 +29,10 @@ public class DisplayRequest extends Request {
 
     public List<ShapeType> getShapesTypes() {
         return shapesTypes;
+    }
+
+    @Override
+    public RequestType getRequestType() {
+        return RequestType.DISPLAYREQUEST;
     }
 }
