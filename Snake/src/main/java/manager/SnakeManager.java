@@ -47,7 +47,7 @@ public class  SnakeManager {
     /**
      * Default constructor
      */
-    public SnakeManager() {
+    private SnakeManager() {
         //TODO: de base apparait au millieu
         // TODO : ajouter la coord de la queue ???
         boardHeight = 40;

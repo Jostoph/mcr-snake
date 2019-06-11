@@ -32,7 +32,7 @@ public class SnakeDisplayer {
             @Override
             public void windowClosing(WindowEvent e)
             {
-                System.out.println("closing");
+                System.out.println("closing...");
                 timer.stop();
                 e.getWindow().dispose();
             }
@@ -48,12 +48,42 @@ public class SnakeDisplayer {
 
         snakeManager.nextTurn();
         if(!snakeManager.isAlive()) {
+
             System.out.println("Game Over");
+
+            // update score and game over
+            updateTitle("Game Over [" + snakeManager.getScore() + "]");
+
             timer.stop();
         } else {
+            // update score
+            updateTitle("[" + snakeManager.getScore() + "]");
 
+            // update speed
+            speed = (int) (speed * snakeManager.getSpeedMultiplicator());
+
+            // draw snake
+            drawSnake();
+
+            // draw food
+            drawFood();
+
+            // repaint frame
             frame.repaint();
+
             System.out.println("next");
         }
+    }
+
+    private void updateTitle(String title) {
+        frame.setTitle("Snake - " + title);
+    }
+
+    private void drawSnake() {
+        // TODO
+    }
+
+    private void drawFood() {
+        // TODO
     }
 }
