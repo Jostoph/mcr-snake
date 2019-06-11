@@ -142,6 +142,14 @@ public class  SnakeManager {
         }
     }
 
+    public void remPoints(int points) {
+        score -= points;
+
+        if(score < 0) {
+            alive = false;
+        }
+    }
+
     private void addFood () {
         Random random = new Random();
 
