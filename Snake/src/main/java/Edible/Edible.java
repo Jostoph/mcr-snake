@@ -1,4 +1,4 @@
 package Edible;
 
-public interface Edible {
+public abstract class Edible {
 }

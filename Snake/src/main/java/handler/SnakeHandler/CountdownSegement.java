@@ -1,41 +1,33 @@
 package handler.SnakeHandler;
 
-import handler.Handler;
 import request.DisplayRequest;
 import request.Request;
+
 /**
- * 
+ *
  */
 public class CountdownSegement extends SnakeSegment {
-    //TODO: information
-    public static final String info= "JE SUIS UN SEGMENT COUNTDOWN";
+    //TODO : christoph
+    public static final String info = "JE SUIS UN SEGMENT COUNTDOWN";
 
     /**
      *
      */
     private int count;
 
-
-
-    /**
-     * @param request
-     */
-    public void Handle(Request request) {
-        // TODO implement here
+    public CountdownSegement(SnakeSegment next, SnakeSegment previous, int count) {
+        super(next, previous);
+        this.count = count;
     }
 
-
-    /**
-     * 
-     */
-    public void makeaction() {
-        // TODO implement here
-    }
-
-
+    //TODO : christoph
     @Override
     public void information(DisplayRequest request) {
         request.addinfo(info);
     }
 
+    @Override
+    public void handle(Request request) {
+
+    }
 }

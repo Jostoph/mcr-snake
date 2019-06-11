@@ -9,12 +9,19 @@ import java.awt.*;
  *
  */
 public class ColorTrapSnakeSegment extends ColorSnakeSegment {
-    //TODO: information
-    public static final String info = "JE SUIS UN SEGMENT COUNTDOWN de couleur ";
+    //TODO : christoph
+    private static final String info = "JE SUIS UN SEGMENT COUNTDOWN de couleur ";
 
-    public ColorTrapSnakeSegment(Color color) {
-        super(color);
+    /**
+     *  constructor
+     * @param next next handler
+     * @param previous previous handler
+     * @param color the color of this specific segment
+     */
+    public ColorTrapSnakeSegment(SnakeSegment next, SnakeSegment previous, Color color) {
+        super(next, previous, color);
     }
+
 
     /**
      * @param request
@@ -23,6 +30,7 @@ public class ColorTrapSnakeSegment extends ColorSnakeSegment {
         // TODO implement here
     }
 
+    //TODO : christoph
     @Override
     public void information(DisplayRequest request) {
         request.addinfo(info + color);

@@ -1,28 +1,28 @@
 package Manager;
 
-public enum  Deplacement {
-    UP{
+public enum Direction {
+    UP {
         @Override
         public Coordinate toCoordinate() {
-            return new Coordinate(0,-1);
+            return new Coordinate(0, -1);
         }
     },
-    LEFT{
+    LEFT {
         @Override
         public Coordinate toCoordinate() {
-            return new Coordinate(-1,0);
+            return new Coordinate(-1, 0);
         }
     },
-    DOWN{
+    DOWN {
         @Override
         public Coordinate toCoordinate() {
-            return new Coordinate(1,0);
+            return new Coordinate(1, 0);
         }
     },
-    RIGHT{
+    RIGHT {
         @Override
         public Coordinate toCoordinate() {
-            return new Coordinate(0,1);
+            return new Coordinate(0, 1);
         }
     };
 

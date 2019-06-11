@@ -2,7 +2,8 @@ package Manager;
 
 import Edible.Edible;
 import handler.SnakeHandler.Head;
-import handler.SnakeHandler.SnakeSegment;
+import handler.SnakeHandler.Tail;
+import request.DisplayRequest;
 
 
 import java.util.*;
@@ -17,10 +18,11 @@ public class SnakeManager {
     private LinkedList<Coordinate> snake = new LinkedList<>();
     private Map<Edible, Coordinate> edibles = new HashMap<>();
     private Head head;
+    private DisplayRequest displayRequest = new DisplayRequest();
     //TODO: edit les tailles
     private static final int MAXBOARDWIDTH = 100;
     private static final int MAXBOARDLEGHT = 50;
-    private Deplacement deplacement;
+    private Direction direction;
 
     /**
      * Default constructor
@@ -29,24 +31,30 @@ public class SnakeManager {
         //TODO: de base apparait au millieu
         snake.add(new Coordinate(MAXBOARDLEGHT / 2, MAXBOARDWIDTH / 2));
         //ajoute une tête
-        head = new Head( );
+        head = new Head(new Tail(head));
         //TODO: de base se déplace vers la gauche
-        deplacement = Deplacement.LEFT;
+        direction = Direction.LEFT;
     }
 
-    void addSnakeSegmentCoordinate(SnakeSegment snakeSegment) {
+    void addSnakCoordinate() {
         //TODO: nouvelle élement toujours a droite
-        snake.add(new Coordinate(snake.getLast().getX() + 1, snake.getLast().getY()));
-
-        //TODO: ateint la fin de la liste (on pourrait le faire avec une requete peu être ?? ?
-        SnakeSegment segment = head;
-        while (segment.next() != null) {
-            segment = segment.next();
-        }
-        segment.setNext(snakeSegment);
+        snake.addFirst(new Coordinate(snake.getFirst().getX() + direction.toCoordinate().getX(),
+                snake.getFirst().getY() + direction.toCoordinate().getY()));
     }
 
-    public void setDeplacement(Deplacement deplacement) {
-        this.deplacement = deplacement;
+    void move() {
+        head.handle(displayRequest);
+        addSnakCoordinate();
+
+        while (displayRequest.getInformation().size() < snake.size() - 2)
+            snake.remove(snake.getLast());
+    }
+
+    void nextTurn(){
+        //TODO: utilser avec direction
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 }
