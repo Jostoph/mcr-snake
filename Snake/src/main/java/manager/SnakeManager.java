@@ -122,6 +122,10 @@ public class  SnakeManager {
         return alive;
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
