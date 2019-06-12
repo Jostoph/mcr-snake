@@ -1,9 +1,7 @@
 package handler.snakeHandler;
 
 import request.AddHandlerRequest;
-import request.DisplayRequest;
 import request.Request;
-import request.RequestType;
 
 /**
  * the head of the snake
