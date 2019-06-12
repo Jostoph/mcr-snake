@@ -26,8 +26,6 @@ public class SnakeDisplayer {
 
     private int width;
     private int height;
-    boolean test = true;
-
     private int scale = 20;
     private SnakeManager snakeManager;
 
@@ -164,7 +162,6 @@ public class SnakeDisplayer {
                     break;
                 default:
                     g2d.fillOval(x, y, 20,20);
-
             }
         }
     }
