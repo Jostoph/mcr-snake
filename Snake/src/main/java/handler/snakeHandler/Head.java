@@ -1,9 +1,7 @@
 package handler.snakeHandler;
 
 import request.AddHandlerRequest;
-import request.DisplayRequest;
 import request.Request;
-import request.RequestType;
 
 /**
  * the head of the snake
@@ -26,10 +24,6 @@ public class Head extends SnakeSegment {
     public void handle(Request request) {
 
         switch (request.getRequestType()) {
-            case DISPLAYREQUEST:
-                ((DisplayRequest) request).addColor(this.color);
-                ((DisplayRequest) request).addShapeType(this.shapeType);
-                break;
             case ADDHANDLERREQUEST:
                 SnakeSegment tmp = ((AddHandlerRequest) request).getHandler();
                 tmp.setPrevious(this);
