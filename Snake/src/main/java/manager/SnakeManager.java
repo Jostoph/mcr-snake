@@ -4,6 +4,7 @@ import handler.snakeHandler.*;
 import manager.edible.Food;
 import request.AddHandlerRequest;
 import request.DisplayRequest;
+import request.ShuffleRequest;
 import request.SimpleColorRequest;
 import util.Util;
 
@@ -177,6 +178,10 @@ public class SnakeManager {
         speedMultiplicator += step;
     }
 
+    public Head getHead() {
+        return head;
+    }
+
     public void addPoints(int points) {
         score += points;
 
@@ -201,19 +206,19 @@ public class SnakeManager {
             Color color = Util.getRandomColor();
 
             int rnd = random.nextInt(100);
-            // todo, change stuff
+
             Coordinate newCoordinate;
             do {
                 newCoordinate = new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight));
             } while (snake.contains(newCoordinate));
-            if (rnd < 70) {
+            if (rnd < 40) {
                 food.put(newCoordinate, new Food(new SimpleColorRequest(color, 1), ShapeType.ROUND));
-            } else if (rnd < 80) {
+            } else if (rnd < 60) {
                 food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE));
-            } else if (rnd < 85) {
-                food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorSub(color, 5)), ShapeType.SQUARE));
+            } else if (rnd < 80) {
+                food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorSub(color, 4)), ShapeType.SQUARE));
             } else if (rnd < 90) {
-                food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorSpeed(color, 5)), ShapeType.TRIANGLE));
+                food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorSpeed(color, 4)), ShapeType.TRIANGLE));
             } else if (rnd < 95) {
                 food.put(newCoordinate, new Food(new AddHandlerRequest(new Multiplicator(5)), ShapeType.CIRCLE));
             } else {

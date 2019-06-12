@@ -7,6 +7,7 @@ import manager.SnakeManager;
 import manager.edible.Food;
 import request.AddHandlerRequest;
 import request.DisplayRequest;
+import request.ShuffleRequest;
 import request.SimpleColorRequest;
 
 import javax.swing.*;
@@ -154,6 +155,8 @@ public class SnakeDisplayer {
                 case SIMPLECOLORREQUEST:
                     g2d.setColor(((SimpleColorRequest) foodMap.get(c).getRequest()).getColor());
                     break;
+                case SHUFFLEREQUEST:
+                    g2d.setColor(((ShuffleRequest) foodMap.get(c).getRequest()).getColor());
                 default:
                     System.out.println("this normaly don't be run");
                     break;
