@@ -107,7 +107,7 @@ public class SnakeManager {
 
     }
 
-    public List<Coordinate> getSnakeCoordinates() {
+    public LinkedList<Coordinate> getSnakeCoordinates() {
         return snake;
     }
 
@@ -191,7 +191,7 @@ public class SnakeManager {
 
         if (food.size() < 10) {
 
-            Integer rnd = random.nextInt(4);
+            int rnd = random.nextInt(4);
             Color color = Color.RED;
             ShapeType shapeType;
 

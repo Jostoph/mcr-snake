@@ -13,6 +13,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -117,7 +118,7 @@ public class SnakeDisplayer {
         Graphics2D g2d = (Graphics2D) panel.getGraphics();
         DisplayRequest dr = snakeManager.getDisplayRequest();
 
-        List<Coordinate> snakeList = snakeManager.getSnakeCoordinates();
+        LinkedList<Coordinate> snakeList = snakeManager.getSnakeCoordinates();
 
         // draw head
         g2d.setColor(Color.BLACK);
@@ -127,7 +128,8 @@ public class SnakeDisplayer {
         drawSnakeBody(dr, g2d, snakeList);
 
         // draw tail
-        // TODO add tail
+        g2d.setColor(Color.BLACK);
+        g2d.fillOval(snakeList.getLast().getX() * scale, snakeList.getLast().getY() * scale, 20, 20);
     }
 
     private void drawFood() {
