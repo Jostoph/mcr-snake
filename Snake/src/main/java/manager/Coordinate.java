@@ -59,4 +59,12 @@ public class Coordinate {
     public void setY(int y) {
         this.y = y;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() == this.getClass()) {
+            return ((Coordinate) obj).getX() == this.getX() && ((Coordinate) obj).getY() == this.getY();
+        }
+        return false;
+    }
 }
