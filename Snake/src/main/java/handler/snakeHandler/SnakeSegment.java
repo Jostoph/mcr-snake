@@ -36,8 +36,13 @@ public abstract class SnakeSegment implements DoubleLinkedHandler {
         this.previous = previous;
         this.color = color;
         //insertion on the list of segment
-        previous.setNext(this);
-        next.setPrevious(this);
+        if(previous != null) {
+            previous.setNext(this);
+        }
+
+        if(next != null) {
+            next.setPrevious(this);
+        }
     }
 
     public SnakeSegment(SnakeSegment next, SnakeSegment previous) {

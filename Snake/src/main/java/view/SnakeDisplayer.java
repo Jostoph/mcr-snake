@@ -145,6 +145,9 @@ public class SnakeDisplayer {
         List<Color> colors = dr.getColors();
         List<ShapeType> shapeTypes = dr.getShapesTypes();
 
+        System.out.println(snakeList.size() + " : snakecoord size");
+        System.out.println(colors.size() + " : colors size");
+
         for(int i = 0; i < colors.size(); ++i) {
             g2d.setColor(colors.get(i));
             Coordinate c = snakeList.get(i + 1);

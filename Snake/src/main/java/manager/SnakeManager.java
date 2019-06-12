@@ -57,7 +57,11 @@ public class SnakeManager {
 
         //ajoute une tête
         head = new Head(new Tail(head));
-        //TODO: de base se déplace vers la gauche
+
+        // add some base handlers to start the game
+        head.handle(new AddHandlerRequest(new ColorAdd(Color.RED)));
+        head.handle(new AddHandlerRequest(new ColorAdd(Color.GREEN)));
+
         direction = Direction.LEFT;
 
         displayRequest = new DisplayRequest();
@@ -74,6 +78,7 @@ public class SnakeManager {
     }
 
     private void move() {
+        displayRequest = new DisplayRequest();
         head.handle(displayRequest);
         addSnakeCoordinate();
 
@@ -90,6 +95,12 @@ public class SnakeManager {
         //TODO: utilser avec direction
         Coordinate nextPlace = new Coordinate(snake.getFirst().getX() + direction.toCoordinate().getX(),
                 snake.getFirst().getY() + direction.toCoordinate().getY());
+
+        System.out.println("next place is : " + nextPlace.getX() + ", " + nextPlace.getY());
+        System.out.println("snake list is : \n");
+        for (Coordinate c: snake) {
+            System.out.println("x : " + c.getX() + ", y : " + c.getY());
+        }
 
         if (food.containsKey(nextPlace)) {
             // C'est de la bouffe
