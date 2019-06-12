@@ -21,7 +21,14 @@ public class Multiplicator extends SnakeSegment {
     public Multiplicator(SnakeSegment next, SnakeSegment previous, int multiplicator) {
         super(next, previous);
         shapeType = ShapeType.CIRCLE;
-        color = Color.WHITE;
+        color = Color.BLACK;
+        this.multiplicator = multiplicator;
+    }
+
+    public Multiplicator(int multiplicator) {
+        super(null, null);
+        shapeType = ShapeType.CIRCLE;
+        color = Color.BLACK;
         this.multiplicator = multiplicator;
     }
 
@@ -34,16 +41,12 @@ public class Multiplicator extends SnakeSegment {
                 ((DisplayRequest) request).addShapeType(this.shapeType);
                 break;
             case SIMPLECOLORREQUEST:
-                if (((SimpleColorRequest) request).getColor() == this.getColor()) {
-                    SnakeManager.getInstance().addPoints(((SimpleColorRequest) request).getScore() * multiplicator);
-                }
+                ((SimpleColorRequest) request).setScore(((SimpleColorRequest) request).getScore() * multiplicator);
                 break;
 
             case MULTICOLORREQUEST:
                 for (Color color : ((MutiColorRequest) request).getColors()) {
-                    if (color == this.getColor()) {
-                        SnakeManager.getInstance().remPoints(((MutiColorRequest) request).getScore() * multiplicator);
-                    }
+                    ((MutiColorRequest) request).setScore(((MutiColorRequest) request).getScore() * multiplicator);
                 }
                 break;
         }

@@ -5,6 +5,7 @@ import manager.Coordinate;
 import manager.Direction;
 import manager.SnakeManager;
 import manager.edible.Food;
+import request.AddHandlerRequest;
 import request.DisplayRequest;
 import request.SimpleColorRequest;
 
@@ -34,7 +35,7 @@ public class SnakeDisplayer {
     private Direction direction;
 
     public SnakeDisplayer() {
-        speed = 500;
+        speed = 300;
 
         timer = new Timer(speed, e -> update());
         timer.start();
@@ -148,7 +149,7 @@ public class SnakeDisplayer {
             System.out.println("draw food at :" + c.getX() + "," + c.getY() + " shape type is " + type);
             switch (foodMap.get(c).getRequest().getRequestType()) {
                 case ADDHANDLERREQUEST:
-                    g2d.setColor(Color.MAGENTA);
+                    g2d.setColor(((AddHandlerRequest) foodMap.get(c).getRequest()).getHandler().getColor());
                     break;
                 case SIMPLECOLORREQUEST:
                     g2d.setColor(((SimpleColorRequest) foodMap.get(c).getRequest()).getColor());
@@ -163,7 +164,7 @@ public class SnakeDisplayer {
                     g2d.fillRect(x, y, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 2);
                     break;
                 case TRIANGLE:
-                    g2d.fillRoundRect(x, y, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 4, SIZEDISPLAYABLE / 4); // TODO not a triangle
+                    g2d.fillRoundRect(x, y, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 2); // TODO not a triangle
                     break;
                 case CIRCLE:
                     g2d.drawOval(x, y, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 2);

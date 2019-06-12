@@ -20,6 +20,14 @@ public class SimpleColorRequest implements Request {
         return score;
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
     @Override
     public RequestType getRequestType() {
         return RequestType.SIMPLECOLORREQUEST;
