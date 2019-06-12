@@ -33,6 +33,8 @@ public class ColorSub extends SnakeSegment {
 
         switch (request.getRequestType()) {
             case DISPLAYREQUEST:
+                ((DisplayRequest) request).addColor(this.color);
+                ((DisplayRequest) request).addShapeType(this.shapeType);
                 break;
             case SIMPLECOLORREQUEST:
                 if (((SimpleColorRequest) request).getColor() == this.getColor()) {

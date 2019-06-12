@@ -1,6 +1,7 @@
 package handler.snakeHandler;
 
 import manager.SnakeManager;
+import request.DisplayRequest;
 import request.MutiColorRequest;
 import request.Request;
 import request.SimpleColorRequest;
@@ -29,6 +30,8 @@ public class Multiplicator extends SnakeSegment {
 
         switch (request.getRequestType()) {
             case DISPLAYREQUEST:
+                ((DisplayRequest) request).addColor(this.color);
+                ((DisplayRequest) request).addShapeType(this.shapeType);
                 break;
             case SIMPLECOLORREQUEST:
                 if (((SimpleColorRequest) request).getColor() == this.getColor()) {
