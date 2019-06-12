@@ -12,7 +12,6 @@ import request.SimpleColorRequest;
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 
 /**
@@ -21,6 +20,10 @@ import java.util.List;
 public class SnakeManager {
 
     private static SnakeManager instance = null;
+    private static final int numberOfTurnBeforeAddEdible = 5;
+    private int remainingTurnBeforeAddEdible;
+    private Random random = new Random(System.currentTimeMillis());
+    private static final Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
 
     private LinkedList<Coordinate> snake = new LinkedList<>();
     private Map<Coordinate, Food> food = new HashMap<>();
@@ -82,23 +85,45 @@ public class SnakeManager {
         head.handle(displayRequest);
         addSnakeCoordinate();
 
+
         while (displayRequest.getColors().size() < snake.size() - 2)
             snake.remove(snake.getLast());
     }
 
     private void generateFood() {
-        // TODO : add food to food list
-        // TODO : need Fabrics
+
+        if (remainingTurnBeforeAddEdible-- == 0) {
+            System.out.println("generation food");
+            remainingTurnBeforeAddEdible = numberOfTurnBeforeAddEdible;
+
+            Coordinate newFoodCoordinate = new Coordinate(random.nextInt() * boardWidth - 1, random.nextInt() * boardHeight - 1);
+            while (food.containsKey(newFoodCoordinate) || snake.contains(newFoodCoordinate)) {
+                newFoodCoordinate = new Coordinate(random.nextInt(boardWidth - 1), random.nextInt( boardHeight - 1));
+
+            }
+            System.out.println("new Coodinate : (" + newFoodCoordinate.getX()+","+newFoodCoordinate.getY() );
+
+            Color newColor = colors[(random.nextInt() % colors.length + colors.length) % colors.length];
+            System.out.println("new Color :" + newFoodCoordinate);
+
+            Food newFood = new Food(new SimpleColorRequest(newColor, 10), ShapeType.ROUND);
+            System.out.println("new Food :" + newFood);
+
+            food.put(newFoodCoordinate, newFood);
+
+        }
     }
 
-    public void nextTurn() {
+    public void nextTurn(Direction newDirection) {
+        setDirection(newDirection);
         //TODO: utilser avec direction
         Coordinate nextPlace = new Coordinate(snake.getFirst().getX() + direction.toCoordinate().getX(),
                 snake.getFirst().getY() + direction.toCoordinate().getY());
+        addFood();
 
         System.out.println("next place is : " + nextPlace.getX() + ", " + nextPlace.getY());
         System.out.println("snake list is : \n");
-        for (Coordinate c: snake) {
+        for (Coordinate c : snake) {
             System.out.println("x : " + c.getX() + ", y : " + c.getY());
         }
 
@@ -200,7 +225,8 @@ public class SnakeManager {
     private void addFood() {
         Random random = new Random();
 
-        if (food.size() < 10) {
+        if (food.size() < 10 && remainingTurnBeforeAddEdible-- == 0) {
+                remainingTurnBeforeAddEdible = numberOfTurnBeforeAddEdible;
 
             int rnd = random.nextInt(4);
             Color color = Color.RED;
