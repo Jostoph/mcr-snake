@@ -16,12 +16,6 @@ public class Tail extends SnakeSegment {
 
     @Override
     public void handle(Request request) {
-
-        switch (request.getRequestType()) {
-            case DISPLAYREQUEST:
-                ((DisplayRequest) request).addColor(this.color);
-                ((DisplayRequest) request).addShapeType(this.shapeType);
-                break;
-        }
+        // does nothing for now
     }
 }
