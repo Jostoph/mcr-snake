@@ -98,10 +98,10 @@ public class SnakeManager {
 
             Coordinate newFoodCoordinate = new Coordinate(random.nextInt() * boardWidth - 1, random.nextInt() * boardHeight - 1);
             while (food.containsKey(newFoodCoordinate) || snake.contains(newFoodCoordinate)) {
-                newFoodCoordinate = new Coordinate(random.nextInt(boardWidth - 1), random.nextInt( boardHeight - 1));
+                newFoodCoordinate = new Coordinate(random.nextInt(boardWidth - 1), random.nextInt(boardHeight - 1));
 
             }
-            System.out.println("new Coodinate : (" + newFoodCoordinate.getX()+","+newFoodCoordinate.getY() );
+            System.out.println("new Coodinate : (" + newFoodCoordinate.getX() + "," + newFoodCoordinate.getY());
 
             Color newColor = colors[(random.nextInt() % colors.length + colors.length) % colors.length];
             System.out.println("new Color :" + newFoodCoordinate);
@@ -226,7 +226,7 @@ public class SnakeManager {
         Random random = new Random();
 
         if (food.size() < 10 && remainingTurnBeforeAddEdible-- == 0) {
-                remainingTurnBeforeAddEdible = numberOfTurnBeforeAddEdible;
+            remainingTurnBeforeAddEdible = numberOfTurnBeforeAddEdible;
 
             int rnd = random.nextInt(4);
             Color color = Color.RED;
@@ -261,7 +261,13 @@ public class SnakeManager {
 
             if (rnd < 91) {
                 // todo, change stuff
-                food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
+                Coordinate newCoordinate;
+                do {
+                    newCoordinate = new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight));
+                } while (snake.contains(newCoordinate));
+
+
+                food.put(newCoordinate,
                         new Food(new SimpleColorRequest(color, 1), shapeType));
             } else {
                 food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),

@@ -158,7 +158,6 @@ public class SnakeDisplayer {
                     break;
             }
 
-
             switch (type) {
                 case SQUARE:
                     g2d.fillRect(x, y, SIZEDISPLAYABLE / 2, SIZEDISPLAYABLE / 2);
