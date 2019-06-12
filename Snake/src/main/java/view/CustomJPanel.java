@@ -21,7 +21,7 @@ public class CustomJPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-       g.drawImage(buffer, 0, 0, this);
+        g.drawImage(buffer, 0, 0, this);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class CustomJPanel extends JPanel {
         buffer = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D g2d = (Graphics2D) buffer.getGraphics();
-        Rectangle2D bg = new Rectangle2D.Double(0,0,width,height);
+        Rectangle2D bg = new Rectangle2D.Double(0, 0, width, height);
 
         g2d.fill(bg);
     }

@@ -1,7 +1,7 @@
 package request;
 
-        import java.awt.*;
-        import java.util.ArrayList;
+import java.awt.*;
+import java.util.ArrayList;
 
 public class MutiColorRequest implements Request {
     private ArrayList<Color> colors = new ArrayList<Color>();
@@ -21,6 +21,10 @@ public class MutiColorRequest implements Request {
 
     public int getScore() {
         return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     @Override

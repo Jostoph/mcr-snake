@@ -1,18 +1,15 @@
 package manager;
 
-import handler.snakeHandler.ColorAdd;
-import handler.snakeHandler.Head;
-import handler.snakeHandler.ShapeType;
-import handler.snakeHandler.Tail;
+import handler.snakeHandler.*;
 import manager.edible.Food;
 import request.AddHandlerRequest;
 import request.DisplayRequest;
 import request.SimpleColorRequest;
+import util.Util;
 
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 
 /**
@@ -21,6 +18,8 @@ import java.util.List;
 public class SnakeManager {
 
     private static SnakeManager instance = null;
+    private static final int numberOfTurnBeforeAddEdible = 3;
+    private int remainingTurnBeforeAddEdible;
 
     private LinkedList<Coordinate> snake = new LinkedList<>();
     private Map<Coordinate, Food> food = new HashMap<>();
@@ -47,8 +46,6 @@ public class SnakeManager {
      * Default constructor
      */
     private SnakeManager() {
-        //TODO: de base apparait au millieu
-        // TODO : ajouter la coord de la queue ???
         boardHeight = 40;
         boardWidth = 40;
 
@@ -72,7 +69,6 @@ public class SnakeManager {
     }
 
     private void addSnakeCoordinate() {
-        //TODO: nouvelle élement toujours a droite
         snake.addFirst(new Coordinate(snake.getFirst().getX() + direction.toCoordinate().getX(),
                 snake.getFirst().getY() + direction.toCoordinate().getY()));
     }
@@ -82,30 +78,30 @@ public class SnakeManager {
         head.handle(displayRequest);
         addSnakeCoordinate();
 
+
         while (displayRequest.getColors().size() < snake.size() - 2)
             snake.remove(snake.getLast());
     }
 
-    private void generateFood() {
-        // TODO : add food to food list
-        // TODO : need Fabrics
-    }
 
-    public void nextTurn() {
-        //TODO: utilser avec direction
+    public void nextTurn(Direction newDirection) {
+        setDirection(newDirection);
         Coordinate nextPlace = new Coordinate(snake.getFirst().getX() + direction.toCoordinate().getX(),
                 snake.getFirst().getY() + direction.toCoordinate().getY());
+        addFood();
 
         System.out.println("next place is : " + nextPlace.getX() + ", " + nextPlace.getY());
         System.out.println("snake list is : \n");
-        for (Coordinate c: snake) {
+        for (Coordinate c : snake) {
             System.out.println("x : " + c.getX() + ", y : " + c.getY());
         }
 
         if (food.containsKey(nextPlace)) {
             // C'est de la bouffe
             head.handle(this.food.get(nextPlace).getRequest());
-        } else if (nextPlace.getX() < 0 || nextPlace.getX() > boardWidth ||
+            food.remove(nextPlace);
+        }
+        if (nextPlace.getX() < 0 || nextPlace.getX() > boardWidth ||
                 nextPlace.getY() < 0 || nextPlace.getY() > boardHeight) {
             // Out of bond -> game over
             alive = false;
@@ -146,7 +142,7 @@ public class SnakeManager {
         return score;
     }
 
-    public void setDirection(Direction direction) {
+    private void setDirection(Direction direction) {
 
         Direction impossible;
 
@@ -200,49 +196,29 @@ public class SnakeManager {
     private void addFood() {
         Random random = new Random();
 
-        if (food.size() < 10) {
+        if (food.size() < 20 && remainingTurnBeforeAddEdible-- == 0) {
+            remainingTurnBeforeAddEdible = numberOfTurnBeforeAddEdible;
+            Color color = Util.getRandomColor();
 
-            int rnd = random.nextInt(4);
-            Color color = Color.RED;
-            ShapeType shapeType;
-
-            switch (rnd) {
-                case 1:
-                    color = Color.RED;
-                    break;
-                case 2:
-                    color = Color.BLUE;
-                    break;
-                case 3:
-                    color = Color.GREEN;
-                    break;
-                case 4:
-                    color = Color.YELLOW;
-                    break;
-            }
-
-            rnd = random.nextInt(10);
-
-            if (rnd < 7) {
-                shapeType = ShapeType.ROUND;
-            } else if (rnd < 9) {
-                shapeType = ShapeType.TRIANGLE;
+            int rnd = random.nextInt(100);
+            // todo, change stuff
+            Coordinate newCoordinate;
+            do {
+                newCoordinate = new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight));
+            } while (snake.contains(newCoordinate));
+            if (rnd < 70) {
+                food.put(newCoordinate, new Food(new SimpleColorRequest(color, 1), ShapeType.ROUND));
+            } else if (rnd < 80) {
+                food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE));
+            } else if (rnd < 85) {
+                food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorSub(color, 5)), ShapeType.SQUARE));
+            } else if (rnd < 90) {
+                food.put(newCoordinate, new Food(new AddHandlerRequest(new ColorSpeed(color, 5)), ShapeType.TRIANGLE));
+            } else if (rnd < 95) {
+                food.put(newCoordinate, new Food(new AddHandlerRequest(new Multiplicator(5)), ShapeType.CIRCLE));
             } else {
-                shapeType = ShapeType.SQUARE;
+                food.put(newCoordinate, new Food(new AddHandlerRequest(new Transformer()), ShapeType.ROUND));
             }
-
-            rnd = random.nextInt(100);
-
-            if (rnd < 91) {
-                // todo, change stuff
-                food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
-                        new Food(new SimpleColorRequest(color, 1), shapeType));
-            } else {
-                food.put(new Coordinate(random.nextInt(boardWidth), random.nextInt(boardHeight)),
-
-                        new Food(new AddHandlerRequest(new ColorAdd(color)), ShapeType.CIRCLE)); // TOdo différencier
-            }
-            // Todo nique toi travis
         }
     }
 }

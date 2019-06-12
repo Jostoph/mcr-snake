@@ -24,11 +24,19 @@ public class ColorSub extends SnakeSegment {
         this.countdown = countdown;
     }
 
+    public ColorSub(Color color, int countdown) {
+        super(null, null, color);
+        shapeType = ShapeType.SQUARE;
+        this.countdown = countdown;
+    }
+
     @Override
     public void handle(Request request) {
-        if(countdown == 0){
+        if (countdown == 0) {
             this.next().setPrevious(this.previous());
+            this.previous().setNext(next());
             next().handle(request);
+            return;
         }
 
         switch (request.getRequestType()) {
@@ -52,9 +60,7 @@ public class ColorSub extends SnakeSegment {
                 countdown--;
                 break;
         }
-        if(countdown == 0){
-            this.next().setPrevious(this.previous());
-        }
+
         next().handle(request);
     }
 }

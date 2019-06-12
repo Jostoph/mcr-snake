@@ -62,9 +62,14 @@ public class Coordinate {
 
     @Override
     public boolean equals(Object obj) {
-        if(obj.getClass() == this.getClass()) {
+        if (obj.getClass() == this.getClass()) {
             return ((Coordinate) obj).getX() == this.getX() && ((Coordinate) obj).getY() == this.getY();
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return getX() * 1000 + getY();
     }
 }

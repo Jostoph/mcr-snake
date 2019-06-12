@@ -24,12 +24,21 @@ public class ColorSpeed extends SnakeSegment {
         this.countdown = countdown;
     }
 
+    public ColorSpeed(Color color, int countdown) {
+        super(null, null, color);
+        shapeType = ShapeType.TRIANGLE;
+        this.countdown = countdown;
+    }
+
+
     @Override
     public void handle(Request request) {
 
-        if(countdown == 0){
+        if (countdown == 0) {
             this.next().setPrevious(this.previous());
+            this.previous().setNext(next());
             next().handle(request);
+            return;
         }
 
         switch (request.getRequestType()) {
@@ -39,7 +48,7 @@ public class ColorSpeed extends SnakeSegment {
                 break;
             case SIMPLECOLORREQUEST:
                 if (((SimpleColorRequest) request).getColor() == this.getColor()) {
-                    SnakeManager.getInstance().incSpeedMultiplicator(1/countdown);
+                    SnakeManager.getInstance().incSpeedMultiplicator(2);
                     countdown--;
                 }
                 break;
@@ -47,17 +56,14 @@ public class ColorSpeed extends SnakeSegment {
             case MULTICOLORREQUEST:
                 for (Color color : ((MutiColorRequest) request).getColors()) {
                     if (color == this.getColor()) {
-                        SnakeManager.getInstance().incSpeedMultiplicator(1/countdown);
+                        SnakeManager.getInstance().incSpeedMultiplicator(1 / countdown);
                     }
                 }
                 countdown--;
                 break;
         }
+        next().handle(request);
 
-        if(countdown == 0){
-            this.next().setPrevious(this.previous());
-            next().handle(request);
-        }
 
     }
 }
